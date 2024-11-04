@@ -6,13 +6,14 @@ Library     JSONLibrary
 
 *** Variables ***
 ${Browser}      chrome
-
+${app}      https://testpages.herokuapp.com/styled/tag/dynamic-table.html
 
 
 *** Test Cases ***
 Test1
+    [Documentation]     Verify that given data should be populated in dynamic table
      #Open the url
-     Open Browser       https://testpages.herokuapp.com/styled/tag/dynamic-table.html       ${Browser}
+     Open Browser       ${app}       ${Browser}
      Maximize Browser Window
      #Verify that Dyanmic HTML Table Tag page is visible or not
      Wait Until Element Is Visible    //h1[text()='Dynamic HTML TABLE Tag']     1m
@@ -24,7 +25,7 @@ Test1
      Verify that data should be populated in Dynamic table
      Capture Page Screenshot
      Sleep    10s
-     Close Browser
+     [Teardown]     Close Browser
 
 *** Keywords ***
 Get Data from Json file
